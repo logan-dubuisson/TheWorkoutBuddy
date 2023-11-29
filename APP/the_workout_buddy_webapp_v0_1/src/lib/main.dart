@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'TWB Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 77, 225, 151)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'The Workout Buddy'),
     );
   }
 }
@@ -55,16 +55,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _repCounter = 0;
+  int _totalReps = 0;
+  int _setCounter = 0;
 
-  void _incrementCounter() {
+  void _incrementRep() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _repCounter++;
+      _totalReps++;
+      if (_repCounter > 4) {
+        _repCounter = 0;
+        _setCounter++;
+      }
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _repCounter = 0;
+      _totalReps = 0;
+      _setCounter = 0;
     });
   }
 
@@ -103,22 +118,33 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              '\nReps: $_repCounter\n',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            FilledButton(
+              onPressed: _incrementRep,
+              child: const Text(
+                'Add Rep'
+              ),
             ),
             Text(
-              '$_counter',
+              '\n\nSets: $_setCounter\n',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Text(
+              '\n\nTotal Reps: $_totalReps',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: _resetCounter,
+        tooltip: 'Reset',
+        child: const Icon(Icons.arrow_circle_left_rounded),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
