@@ -10,7 +10,7 @@
 #define VBAT_READ   P0_31   // battery voltage monitor pin
 #define VBAT_LOWER  3.5     // battery voltage lower limit
 #define VBAT_UPPER  4.2     // battery voltage upper limit
-#define dataNum 8           //send data number : rolll, pitch, yaw, Vbatt (4 data 8 byte)
+#define dataNum 14           //send data number : rolll, pitch, yaw, Vbatt (4 data 8 byte) (Also accel. so 14 bytes total)
 
 LSM6DS3 myIMU(I2C_MODE, 0x6A); // IMU
 Madgwick  filter;              // Madgwick filter
@@ -144,10 +144,13 @@ void loop() {
       Vbatt = 2.961 * 2.4 * Vadc / 4096 * 1.0196;     // Vref=2.4, 1/attination=(510e3 + 1e6)/510e3=2.961
                                                       // correction=1.0196(option)
       // convert float data to uint16_t data
-      ud.dataBuff16[0] = (roll * 32768) / 180; 
-      ud.dataBuff16[1] = (pitch * 32768) / 180; 
-      ud.dataBuff16[2] = (yaw * 32768) / 360;       
+      ud.dataBuff16[0] = (roll ); 
+      ud.dataBuff16[1] = (pitch ); 
+      ud.dataBuff16[2] = (yaw );       
       ud.dataBuff16[3] = Vbatt * 1000;
+      ud.dataBuff16[4] = ax;
+      ud.dataBuff16[5] = ay;
+      ud.dataBuff16[6] = az;
      
       // for Serial plotter 5~20mS
       Serial.print(yaw);
@@ -156,6 +159,12 @@ void loop() {
       Serial.print(" ");
       Serial.print(roll);
       Serial.println();
+      Serial.print(ax);
+      Serial.print(" ");
+      Serial.print(ay);
+      Serial.print(" ");
+      Serial.print(az);
+      Serial.println(); Serial.println();
 
       // write to Characteristic as byte data        
       dataCharacteristic.writeValue(ud.dataBuff8, dataNum);   // 40~100uS
