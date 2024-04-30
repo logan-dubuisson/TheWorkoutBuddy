@@ -21,7 +21,7 @@ BLECharacteristic dataCharacteristic(myUUID("0010"), BLERead | BLENotify, dataNu
 
 void setup() {
   // put your setup code here, to run once:
-Serial.begin(115200);
+  Serial.begin(115200);
   while (!Serial)
     delay(10); // will pause Zero, Leonardo, etc until serial console opens
 
@@ -40,7 +40,7 @@ Serial.begin(115200);
   mpu.setGyroRange(MPU6050_RANGE_500_DEG);
   mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
 
-    if (!BLE.begin()) {
+  if (!BLE.begin()) {
     Serial.println("starting BLE module failed!");
     while (1);
   }
@@ -48,7 +48,7 @@ Serial.begin(115200);
     // set the local name
   BLE.setLocalName("Att_Monitor");
   // set the device name
-  BLE.setDeviceName("XIAO nRF52840 Sence");
+  BLE.setDeviceName("Sensor System");
   // set the UUID for the service
   BLE.setAdvertisedService(AttService);
   // add the characteristic to the service  
@@ -64,7 +64,7 @@ Serial.begin(115200);
 
 void loop() {
   // put your main code here, to run repeatedly:
- sensors_event_t a, g, temp;
+  sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
 
     // connect the sentral
@@ -81,44 +81,43 @@ void loop() {
       mpu.getEvent(&a, &g, &temp);
 
        //Converting float data to uint16_t data
-    ud.dataBuff16[0] = (int16_t)(a.acceleration.x * 128);
-    ud.dataBuff16[1] = (int16_t)(a.acceleration.y * 128);
-    ud.dataBuff16[2] = (int16_t)(a.acceleration.z * 128);
-    ud.dataBuff16[3] = (int16_t)(g.gyro.x * 128);
-    ud.dataBuff16[4] = (int16_t)(g.gyro.y * 128);
-    ud.dataBuff16[5] = (int16_t)(g.gyro.z * 128);
-    ud.dataBuff16[6] = (int16_t)(temp.temperature * 128);
-    
-    if(millis() - 500 > time){
-      /* Print out the values */
-  Serial.print("Acceleration X: ");
-  Serial.print(a.acceleration.x);
-  Serial.print(", Y: ");
-  Serial.print(a.acceleration.y);
-  Serial.print(", Z: ");
-  Serial.print(a.acceleration.z);
-  Serial.println(" m/s^2");
+      ud.dataBuff16[0] = (int16_t)(a.acceleration.x * 128);
+      ud.dataBuff16[1] = (int16_t)(a.acceleration.y * 128);
+      ud.dataBuff16[2] = (int16_t)(a.acceleration.z * 128);
+      ud.dataBuff16[3] = (int16_t)(g.gyro.x * 128);
+      ud.dataBuff16[4] = (int16_t)(g.gyro.y * 128);
+      ud.dataBuff16[5] = (int16_t)(g.gyro.z * 128);
+      ud.dataBuff16[6] = (int16_t)(temp.temperature * 128);
+      
+      if(millis() - 500 > time){
+        /* Print out the values */
+        Serial.print("Acceleration X: ");
+        Serial.print(a.acceleration.x);
+        Serial.print(", Y: ");
+        Serial.print(a.acceleration.y);
+        Serial.print(", Z: ");
+        Serial.print(a.acceleration.z);
+        Serial.println(" m/s^2");
 
-  Serial.print("Rotation X: ");
-  Serial.print(g.gyro.x);
-  Serial.print(", Y: ");
-  Serial.print(g.gyro.y);
-  Serial.print(", Z: ");
-  Serial.print(g.gyro.z);
-  Serial.println(" rad/s");
+        Serial.print("Rotation X: ");
+        Serial.print(g.gyro.x);
+        Serial.print(", Y: ");
+        Serial.print(g.gyro.y);
+        Serial.print(", Z: ");
+        Serial.print(g.gyro.z);
+        Serial.println(" rad/s");
 
-  Serial.print("Temperature: ");
-  Serial.print(temp.temperature);
-  Serial.println(" degC");
+        Serial.print("Temperature: ");
+        Serial.print(temp.temperature);
+        Serial.println(" degC");
 
-  Serial.println("");
-  delay(500);
-     }
-           // write to Characteristic as byte data        
+        Serial.println("");
+        delay(500);
+      }
+
+      // write to Characteristic as byte data        
       dataCharacteristic.writeValue(ud.dataBuff8, dataNum);
 
+    }
   }
-}
-
-  
 }
