@@ -15,12 +15,14 @@
 #define REP_DELAY 5000 // Delay in milliseconds between reps
 
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+bool changeFlag = true;
 
 unsigned long lastRepTime = 0; // Time of the last detected rep
 bool repInProgress = false; // Flag to track if a repetition is in progress
 int repCount = 0; // Variable to store the repetition count
 int repTotal = 15;
 int setCount = 0;
+bool countFlag = true;
 
 bool repState = false;
 
@@ -34,7 +36,7 @@ float grav[3] = {0, 0, 0};
 float gTotal = 9.8;
 float angle[3] = {0, 0, 0};
 float ax_prev, ay_prev, az_prev;
-float speed = 0., height = 0.;
+float speed = 0., height = 0., alpha = 0.4;
 //
 
 int ss;                             // peripheral signal strength
@@ -47,8 +49,8 @@ union unionData {                   // Union for bit convertion 16 <--> 8
 };
 union unionData ud;
 
-//char buffer
-char buf[20];
+// char buffer
+// char buf[20];
 
 // Characteristic UUID
 #define myUUID(val) ("0dd7eb5a-" val "-4f45-bcd7-94c674c3b25f")
@@ -59,209 +61,171 @@ BLEDevice peripheral;
 
 void setup() {
   // put your setup code here, to run once:
-   Serial.begin(115200);
+  Serial.begin(115200);
 
-   tft.init(240, 320);
+  tft.init(240, 320);
 
-tft.setRotation(3);
+  tft.setRotation(3);
 
-Serial.println(F("Initialized"));
+  Serial.println(F("Initialized"));
 
-uint16_t time = millis();
-tft.fillScreen(ST77XX_BLACK);
-time = millis() - time;
+  uint16_t time = millis();
+  tft.fillScreen(ST77XX_BLACK);
+  time = millis() - time;
 
-Serial.println(time, DEC);
-delay(500);
+  Serial.println(time, DEC);
+  delay(500);
 
-// large block of text
-tft.fillScreen(ST77XX_BLACK);
-tft.setCursor(40, 50);
-tft.setTextColor(ST77XX_WHITE);
-tft.setTextSize(4);
-tft.println("The Workout");
-tft.setCursor(100,90);
-tft.setTextColor(ST77XX_WHITE);
-tft.setTextSize(4);
-tft.println("Buddy");
-tft.setCursor(50,150);
-tft.setTextColor(ST77XX_BLUE);
-tft.setTextSize(2);
-tft.println("Brought to you by:");
-tft.setCursor(75,180);
-tft.println("Bravo Builders");
-delay(5000);
-tft.fillScreen(ST77XX_BLACK);
+  // large block of text
+  tft.fillScreen(ST77XX_BLACK);
+  tft.setCursor(40, 50);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextSize(4);
+  tft.println("The Workout");
+  tft.setCursor(100,90);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextSize(4);
+  tft.println("Buddy");
+  tft.setCursor(50,150);
+  tft.setTextColor(ST77XX_BLUE);
+  tft.setTextSize(2);
+  tft.println("Brought to you by:");
+  tft.setCursor(75,180);
+  tft.println("Bravo Builders");
+  delay(5000);
+  tft.fillScreen(ST77XX_BLACK);
 
 
-     // initialize BLE
-  BLE.begin(); 
+  // initialize BLE
+  BLE.begin();
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-   err = scan_connect();
+  err = scan_connect();
 
-  //Display connecting to LCD module
-   tft.setCursor(5, 100); 
-   tft.setTextColor(ST77XX_WHITE);
-   tft.setTextSize(4);
-   tft.print("Connecting...");
+  if(changeFlag){
+    changeFlag = false;
+    //Display connecting to LCD module
+    tft.fillScreen(ST77XX_BLACK);
+    tft.setCursor(5, 100); 
+    tft.setTextColor(ST77XX_WHITE);
+    tft.setTextSize(4);
+    tft.print("Connecting...");
+  }
 
    //if connected
-   if(err == 0){
+  if(err == 0){
+    speed = 0.;
+    height = 0.;
+    inited = false;
+    changeFlag = true;
 
-    long timestamp = millis(); //for timer
+    long timestamp = millis();        //for debug timer
+    uint64_t measuredTime = micros(); //for measurement scaling timer
 
     while(peripheral.connected()){
 
       
-  readingFlag = true;   
-    ax = ud.dataBuff16[0] /128.;
-    ay = ud.dataBuff16[1] /128.;
-    az = ud.dataBuff16[2] /128.;
-    gx = ud.dataBuff16[3] /128.;
-    gy = ud.dataBuff16[4] /128.;
-    gz = ud.dataBuff16[5] /128.;
-    temp = ud.dataBuff16[6] /128.;
-  readingFlag = false;
+      readingFlag = true;   
+        ax = ud.dataBuff16[0] /128.;
+        ay = ud.dataBuff16[1] /128.;
+        az = ud.dataBuff16[2] /128.;
+        gx = ud.dataBuff16[3] /128.;
+        gy = ud.dataBuff16[4] /128.;
+        gz = ud.dataBuff16[5] /128.;
+        temp = ud.dataBuff16[6] /128.;
+      readingFlag = false;
 
-  //call function for process
-  float accelMeasured = process(grav, angle);
-  speed += (fabs(accelMeasured) > 0.07) ? accelMeasured : 0.;
-  height += speed;
-  reorient(grav, angle);
+      //call function for process
+      float timeScale = (micros() - measuredTime) / 1000000.; // for scaling based on time since last measurement
+      float accelMeasured = process(grav, angle) * timeScale;
+      measuredTime = micros();
+      speed += (fabs(accelMeasured) > 0.01) ? accelMeasured * timeScale : -speed * alpha;
+      height += speed * 100;  // in cm from m/s speed
+      reorient(grav, angle);
 
-  if(millis() - timestamp > 100){
-    Serial.print("Acceleration: ");
-    Serial.print(ax);
-    Serial.print(", Y: ");
-    Serial.print(ay);
-    Serial.print(", Z: ");
-    Serial.print(az);
-    Serial.println(" m/s^2");  
-    Serial.print("Rotation X: ");
-    Serial.print(gx);
-    Serial.print(", Y: ");
-    Serial.print(gy);
-    Serial.print(", z:");
-    Serial.print(gz);
-    Serial.println(" rad/s");
-    Serial.print(temp); 
-    Serial.println("");
+      if(millis() - timestamp > 100){
+        Serial.print("Acceleration X: ");
+        Serial.print(ax);
+        Serial.print(", Y: ");
+        Serial.print(ay);
+        Serial.print(", Z: ");
+        Serial.print(az);
+        Serial.print("  (G = ");
+        Serial.print(gTotal);
+        Serial.println(" m/s^2");  
+        Serial.print("Rotation X: ");
+        Serial.print(gx);
+        Serial.print(", Y: ");
+        Serial.print(gy);
+        Serial.print(", Z:");
+        Serial.print(gz);
+        Serial.println(" rad/s");
 
-    Serial.print("Vertical acceleration: ");
-    Serial.println(accelMeasured);
-    Serial.print("Speed: ");
-    Serial.print(speed);
-    Serial.print("  |  Height: ");
-    Serial.println(height);
-    
-    timestamp = millis();
-  }
+        Serial.print("Vertical acceleration: ");
+        Serial.print(accelMeasured);
+        Serial.println(" m/s^2");
+        Serial.print("Speed: ");
+        Serial.print(speed);
+        Serial.print(" m/s  |  Height: ");
+        Serial.print(height);
+        Serial.println(" cm\n");
+        
+        timestamp = millis();
+      }
 
-//  while(millis() - timestamp < 5);     // wait for loop time 80mS
+      //Rep code
 
- ///Rep code
-// if (az >= THRESHOLD) {
-//     if (!repInProgress) {
-//       // Start of a new repetition
-//       repInProgress = true;
-//       lastRepTime = millis();
-//       Serial.println("Rep started");
-//     }
-//   } else {
-//     if (repInProgress) {
-//       // End of a repetition
-//       repInProgress = false;
-//       repState = false;
-//       Serial.println("Rep ended");
-//       unsigned long currentTime = millis();
-//       unsigned long repDuration = currentTime - lastRepTime;
-      
-//       if (repDuration < REP_DELAY) {
-//         // Repetition completed within the delay, count it as a valid rep
-//         Serial.println("Valid rep counted!");
-//         repCount++;
-//         //changes
-//         repState= !repState;
-//         //end changes
-//         Serial.print("Total reps: ");
-//         Serial.println(repCount);
+      //end rep code
+      if(countFlag){
+        countFlag = false;
+        if(changeFlag){
+          changeFlag = false;
+          tft.fillScreen(ST77XX_BLACK);
+        }
 
-//         if (repCount >= repTotal){
-//           repCount = 0;
-//           setCount++;
-//           Serial.print("Set Count: ");
-//           Serial.println(setCount);
-//         }
-//         //     if (repCount = repTotal){
-//         // setCount++;
-//         // Serial.print("Total sets: ");
-//         // Serial.print(setCount);
-//    // }
-//       } else {
-//         // Repetition duration exceeded delay, ignore it
-//         Serial.println("Rep ignored due to duration");
-//       }
-//     }
-
-//   }
-
-  //Logan rep function
-
-
-  //end logan function
-
- //end rep code
-     //if true clear screen
-   if(repState = true )
-   {
-    tft.fillScreen(ST77XX_BLACK);
-   }
-
-  tft.setTextWrap(false);
-  tft.setCursor(60, 40);
-  tft.setTextColor(ST77XX_RED);
-  tft.setTextSize(4);
-  tft.println("Rep: ");
-  tft.setCursor(240, 40);
-  tft.print(repCount);
-  tft.setCursor(60,100);
-  tft.setTextColor(ST77XX_YELLOW);
-  tft.setTextSize(4);
-  tft.println("Set: ");
-  tft.setCursor(240,100);
-  tft.print(setCount);
-  tft.setCursor(60,160);
-  tft.setTextColor(ST77XX_GREEN);
-  tft.setTextSize(4);
-  tft.println("Form: ");
-
-
-
-    // tft.setTextColor(ST77XX_GREEN);
-    // tft.setTextSize(4);
-    // sprintf(buf, "Rep: %3d", repCount);
-    //  tft.setCursor(100,40);
-    // tft.print(buf);
-    // tft.setTextColor(ST77XX_RED);
-    // sprintf(buf, "Rep: %3d", repCount);
-    // tft.setCursor(60,40);
-    // tft.print(buf);
-    //delay(2000);
-    // tft.setCursor(180,40);
-    // tft.print(repCount);
-    // tft.print("    ");
-    //tft.fillScreen(ST77XX_BLACK);
+        tft.setTextWrap(false);
+        // Reps
+        tft.setCursor(60, 40);
+        tft.setTextColor(ST77XX_RED);
+        tft.setTextSize(4);
+        tft.println("Rep: ");
+        // Clean previous value
+        tft.setTextColor(ST77XX_BLACK);
+        tft.setCursor(240, 40);
+        tft.print(repCount - 1);
+        // Write new value
+        tft.setTextColor(ST77XX_RED);
+        tft.setCursor(240, 40);
+        tft.print(repCount);
+        // Sets
+        tft.setCursor(60,100);
+        tft.setTextColor(ST77XX_YELLOW);
+        tft.setTextSize(4);
+        tft.println("Set: ");
+        // Clean previous value
+        tft.setTextColor(ST77XX_BLACK);
+        tft.setCursor(240, 100);
+        tft.print(setCount - 1);
+        // Write new value
+        tft.setTextColor(ST77XX_YELLOW);
+        tft.setCursor(240,100);
+        tft.print(setCount);
+        // Form
+        tft.setCursor(60,160);
+        tft.setTextColor(ST77XX_GREEN);
+        tft.setTextSize(4);
+        tft.println("Form: ");
+      }
  
     } //while connected
 
+    changeFlag = true;
+  }//if scan and connect
 
-   }//if scan and connect
-
-   //if disconnected 
+  //if disconnected 
   Serial.print("Disconnected from the peripheral: ");
   Serial.println(peripheral.address());
   Serial.print("ERROR : ");                 // return value of scan_connect
@@ -287,7 +251,7 @@ int scan_connect(void) {
   }
   Serial.println("2.Peripheral is available");
     
-  if (peripheral.localName() != "Att_Monitor") {
+  if (peripheral.localName() != "TWB Sensor") {
     Serial.println("3x.Peripheral local name miss match");
     return 3;
   }
@@ -390,7 +354,6 @@ float process(float gravVec[], float ang[]){
     X, Y, Z
   };
 
-  float accel = (ax - gravVec[X])*(gravVec[X]/gTotal) + 
-  (ay - gravVec[Y])*(gravVec[Y]/gTotal) + (az - gravVec[Z])*(gravVec[Z]/gTotal);
+  float accel = (ax - gravVec[X])*(gravVec[X]/gTotal) + (ay - gravVec[Y])*(gravVec[Y]/gTotal) + (az - gravVec[Z])*(gravVec[Z]/gTotal);
   return accel;
 }
