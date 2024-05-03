@@ -9,7 +9,7 @@
 //LCD module pin assignments
 #define TFT_CS        10
 #define TFT_RST        9
-#define TFT_DC         8
+#define TFT_DC         7
 
 
 class TFT {
@@ -25,6 +25,8 @@ class TFT {
 
     void update(uint32_t reps = 0, uint32_t sets = 0, uint32_t form = 0);
 
+    void connectScreen();
+
     void wipe();
 
   private:
@@ -33,6 +35,7 @@ class TFT {
     enum {
       NONE,
       BOOT,
+      CONNECT,
       MAIN
     } currentScreen;
 

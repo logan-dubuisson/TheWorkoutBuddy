@@ -30,7 +30,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  tft.connectScreen();
   ble.connect();
+  while(!ble.getData(imu.data));
 
   // GET DATA
   while(ble.getData(imu.data)){

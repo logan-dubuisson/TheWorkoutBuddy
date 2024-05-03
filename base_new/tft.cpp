@@ -83,6 +83,18 @@ void TFT::update(uint32_t reps, uint32_t sets, uint32_t form){
   }
 }
 
+
+void TFT::connectScreen(){
+
+  tft.setCursor(5,100);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextSize(4);
+  tft.print("Connecting...");
+  currentScreen = CONNECT;
+  
+}
+
+
 void TFT::wipe(){
   tft.fillScreen(ST77XX_BLACK);
 }
