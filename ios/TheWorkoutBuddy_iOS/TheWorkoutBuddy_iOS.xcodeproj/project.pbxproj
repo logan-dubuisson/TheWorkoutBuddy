@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC2760362BE980C700AAD090 /* TheWorkoutBuddy_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2760352BE980C700AAD090 /* TheWorkoutBuddy_iOSApp.swift */; };
+		EC2760382BE980C700AAD090 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2760372BE980C700AAD090 /* ContentView.swift */; };
+		EC27603A2BE980C900AAD090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2760392BE980C900AAD090 /* Assets.xcassets */; };
+		EC27603D2BE980C900AAD090 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC27603C2BE980C900AAD090 /* Preview Assets.xcassets */; };
+		EC2760472BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2760462BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.swift */; };
+		EC2760512BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2760502BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.swift */; };
+		EC2760532BE980C900AAD090 /* TheWorkoutBuddy_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2760522BE980C900AAD090 /* TheWorkoutBuddy_iOSUITestsLaunchTests.swift */; };
+		EC2760612BE9812100AAD090 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EC2760602BE9812100AAD090 /* FirebaseAnalytics */; };
+		EC2760632BE9812100AAD090 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EC2760622BE9812100AAD090 /* FirebaseAnalyticsOnDeviceConversion */; };
+		EC2760652BE9812100AAD090 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EC2760642BE9812100AAD090 /* FirebaseAnalyticsSwift */; };
+		EC2760672BE9812100AAD090 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EC2760662BE9812100AAD090 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		EC2760692BE9812100AAD090 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = EC2760682BE9812100AAD090 /* FirebaseAppCheck */; };
+		EC27606B2BE98AB600AAD090 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC27606A2BE98AB600AAD090 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC2760432BE980C900AAD090 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC27602A2BE980C700AAD090 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC2760312BE980C700AAD090;
+			remoteInfo = TheWorkoutBuddy_iOS;
+		};
+		EC27604D2BE980C900AAD090 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC27602A2BE980C700AAD090 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC2760312BE980C700AAD090;
+			remoteInfo = TheWorkoutBuddy_iOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC2760322BE980C700AAD090 /* TheWorkoutBuddy_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheWorkoutBuddy_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2760352BE980C700AAD090 /* TheWorkoutBuddy_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheWorkoutBuddy_iOSApp.swift; sourceTree = "<group>"; };
+		EC2760372BE980C700AAD090 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EC2760392BE980C900AAD090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EC27603C2BE980C900AAD090 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EC2760422BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheWorkoutBuddy_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2760462BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheWorkoutBuddy_iOSTests.swift; sourceTree = "<group>"; };
+		EC27604C2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheWorkoutBuddy_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2760502BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheWorkoutBuddy_iOSUITests.swift; sourceTree = "<group>"; };
+		EC2760522BE980C900AAD090 /* TheWorkoutBuddy_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheWorkoutBuddy_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EC27606A2BE98AB600AAD090 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC27602F2BE980C700AAD090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2760652BE9812100AAD090 /* FirebaseAnalyticsSwift in Frameworks */,
+				EC2760612BE9812100AAD090 /* FirebaseAnalytics in Frameworks */,
+				EC2760632BE9812100AAD090 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				EC2760692BE9812100AAD090 /* FirebaseAppCheck in Frameworks */,
+				EC2760672BE9812100AAD090 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC27603F2BE980C900AAD090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2760492BE980C900AAD090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC2760292BE980C700AAD090 = {
+			isa = PBXGroup;
+			children = (
+				EC2760342BE980C700AAD090 /* TheWorkoutBuddy_iOS */,
+				EC2760452BE980C900AAD090 /* TheWorkoutBuddy_iOSTests */,
+				EC27604F2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests */,
+				EC2760332BE980C700AAD090 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC2760332BE980C700AAD090 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC2760322BE980C700AAD090 /* TheWorkoutBuddy_iOS.app */,
+				EC2760422BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.xctest */,
+				EC27604C2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC2760342BE980C700AAD090 /* TheWorkoutBuddy_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EC27606A2BE98AB600AAD090 /* GoogleService-Info.plist */,
+				EC2760352BE980C700AAD090 /* TheWorkoutBuddy_iOSApp.swift */,
+				EC2760372BE980C700AAD090 /* ContentView.swift */,
+				EC2760392BE980C900AAD090 /* Assets.xcassets */,
+				EC27603B2BE980C900AAD090 /* Preview Content */,
+			);
+			path = TheWorkoutBuddy_iOS;
+			sourceTree = "<group>";
+		};
+		EC27603B2BE980C900AAD090 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EC27603C2BE980C900AAD090 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EC2760452BE980C900AAD090 /* TheWorkoutBuddy_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC2760462BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.swift */,
+			);
+			path = TheWorkoutBuddy_iOSTests;
+			sourceTree = "<group>";
+		};
+		EC27604F2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC2760502BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.swift */,
+				EC2760522BE980C900AAD090 /* TheWorkoutBuddy_iOSUITestsLaunchTests.swift */,
+			);
+			path = TheWorkoutBuddy_iOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC2760312BE980C700AAD090 /* TheWorkoutBuddy_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC2760562BE980C900AAD090 /* Build configuration list for PBXNativeTarget "TheWorkoutBuddy_iOS" */;
+			buildPhases = (
+				EC27602E2BE980C700AAD090 /* Sources */,
+				EC27602F2BE980C700AAD090 /* Frameworks */,
+				EC2760302BE980C700AAD090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TheWorkoutBuddy_iOS;
+			packageProductDependencies = (
+				EC2760602BE9812100AAD090 /* FirebaseAnalytics */,
+				EC2760622BE9812100AAD090 /* FirebaseAnalyticsOnDeviceConversion */,
+				EC2760642BE9812100AAD090 /* FirebaseAnalyticsSwift */,
+				EC2760662BE9812100AAD090 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				EC2760682BE9812100AAD090 /* FirebaseAppCheck */,
+			);
+			productName = TheWorkoutBuddy_iOS;
+			productReference = EC2760322BE980C700AAD090 /* TheWorkoutBuddy_iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC2760412BE980C900AAD090 /* TheWorkoutBuddy_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC2760592BE980C900AAD090 /* Build configuration list for PBXNativeTarget "TheWorkoutBuddy_iOSTests" */;
+			buildPhases = (
+				EC27603E2BE980C900AAD090 /* Sources */,
+				EC27603F2BE980C900AAD090 /* Frameworks */,
+				EC2760402BE980C900AAD090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC2760442BE980C900AAD090 /* PBXTargetDependency */,
+			);
+			name = TheWorkoutBuddy_iOSTests;
+			productName = TheWorkoutBuddy_iOSTests;
+			productReference = EC2760422BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EC27604B2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC27605C2BE980C900AAD090 /* Build configuration list for PBXNativeTarget "TheWorkoutBuddy_iOSUITests" */;
+			buildPhases = (
+				EC2760482BE980C900AAD090 /* Sources */,
+				EC2760492BE980C900AAD090 /* Frameworks */,
+				EC27604A2BE980C900AAD090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC27604E2BE980C900AAD090 /* PBXTargetDependency */,
+			);
+			name = TheWorkoutBuddy_iOSUITests;
+			productName = TheWorkoutBuddy_iOSUITests;
+			productReference = EC27604C2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC27602A2BE980C700AAD090 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					EC2760312BE980C700AAD090 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					EC2760412BE980C900AAD090 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = EC2760312BE980C700AAD090;
+					};
+					EC27604B2BE980C900AAD090 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = EC2760312BE980C700AAD090;
+					};
+				};
+			};
+			buildConfigurationList = EC27602D2BE980C700AAD090 /* Build configuration list for PBXProject "TheWorkoutBuddy_iOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC2760292BE980C700AAD090;
+			packageReferences = (
+				EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = EC2760332BE980C700AAD090 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC2760312BE980C700AAD090 /* TheWorkoutBuddy_iOS */,
+				EC2760412BE980C900AAD090 /* TheWorkoutBuddy_iOSTests */,
+				EC27604B2BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC2760302BE980C700AAD090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC27603D2BE980C900AAD090 /* Preview Assets.xcassets in Resources */,
+				EC27603A2BE980C900AAD090 /* Assets.xcassets in Resources */,
+				EC27606B2BE98AB600AAD090 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2760402BE980C900AAD090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC27604A2BE980C900AAD090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC27602E2BE980C700AAD090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2760382BE980C700AAD090 /* ContentView.swift in Sources */,
+				EC2760362BE980C700AAD090 /* TheWorkoutBuddy_iOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC27603E2BE980C900AAD090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2760472BE980C900AAD090 /* TheWorkoutBuddy_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2760482BE980C900AAD090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2760512BE980C900AAD090 /* TheWorkoutBuddy_iOSUITests.swift in Sources */,
+				EC2760532BE980C900AAD090 /* TheWorkoutBuddy_iOSUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC2760442BE980C900AAD090 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC2760312BE980C700AAD090 /* TheWorkoutBuddy_iOS */;
+			targetProxy = EC2760432BE980C900AAD090 /* PBXContainerItemProxy */;
+		};
+		EC27604E2BE980C900AAD090 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC2760312BE980C700AAD090 /* TheWorkoutBuddy_iOS */;
+			targetProxy = EC27604D2BE980C900AAD090 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EC2760542BE980C900AAD090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EC2760552BE980C900AAD090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC2760572BE980C900AAD090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TheWorkoutBuddy_iOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bravobuilders.TheWorkoutBuddy-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC2760582BE980C900AAD090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TheWorkoutBuddy_iOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bravobuilders.TheWorkoutBuddy-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EC27605A2BE980C900AAD090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bravobuilders.TheWorkoutBuddy-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheWorkoutBuddy_iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TheWorkoutBuddy_iOS";
+			};
+			name = Debug;
+		};
+		EC27605B2BE980C900AAD090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bravobuilders.TheWorkoutBuddy-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheWorkoutBuddy_iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TheWorkoutBuddy_iOS";
+			};
+			name = Release;
+		};
+		EC27605D2BE980C900AAD090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bravobuilders.TheWorkoutBuddy-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TheWorkoutBuddy_iOS;
+			};
+			name = Debug;
+		};
+		EC27605E2BE980C900AAD090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bravobuilders.TheWorkoutBuddy-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TheWorkoutBuddy_iOS;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC27602D2BE980C700AAD090 /* Build configuration list for PBXProject "TheWorkoutBuddy_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2760542BE980C900AAD090 /* Debug */,
+				EC2760552BE980C900AAD090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC2760562BE980C900AAD090 /* Build configuration list for PBXNativeTarget "TheWorkoutBuddy_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2760572BE980C900AAD090 /* Debug */,
+				EC2760582BE980C900AAD090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC2760592BE980C900AAD090 /* Build configuration list for PBXNativeTarget "TheWorkoutBuddy_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC27605A2BE980C900AAD090 /* Debug */,
+				EC27605B2BE980C900AAD090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC27605C2BE980C900AAD090 /* Build configuration list for PBXNativeTarget "TheWorkoutBuddy_iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC27605D2BE980C900AAD090 /* Debug */,
+				EC27605E2BE980C900AAD090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC2760602BE9812100AAD090 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		EC2760622BE9812100AAD090 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		EC2760642BE9812100AAD090 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		EC2760662BE9812100AAD090 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		EC2760682BE9812100AAD090 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC27605F2BE9812100AAD090 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EC27602A2BE980C700AAD090 /* Project object */;
+}
